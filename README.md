@@ -7,6 +7,6 @@
     yarn add @mui/styled-engine
     yarn add @mui/icons-material
     yarn add @emotion/react
-    yarn add @emotion/styled 
     yarn add @emotion/styled
+    yarn add react-countdown
 ```

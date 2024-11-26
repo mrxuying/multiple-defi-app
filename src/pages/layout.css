@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  
+}
+
+.header {
+  background-color: #ffe7e7;
+  color: #d400ff;
+  padding: 1em;
+  margin-bottom: 1em; /* 控制垂直空隙 */
+} 
+  
+.navbar {
+  display: flex;
+}
+
+.navbar .connect {
+  margin-left: 10em;
+}
+  
+.navbar-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  
+}
+  
+.navbar-brand {
+  font-size: 1.6em;
+  text-decoration: none; /*不要下划线*/
+  color: #d400ff;
+  text-align: left;
+  margin-right: 5em;
+}
+  
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  text-align: center;
+}
+  
+.navbar-item {
+  display: flex;
+  margin-left: 6em;
+}
+  
+.navbar-item a {
+  text-decoration: none;
+  color: #d400ff;
+}
+  
+.navbar-item a:hover {
+  text-decoration: blueviolet underline;
+}
+
+
+/* pages */
+.container-content {
+  /* background-color: #9a02ac; */
+  display: flex;
+  color: #d400ff;
+  padding: 1em;
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+}
