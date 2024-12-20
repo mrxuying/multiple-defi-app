@@ -1,0 +1,51 @@
+@import 'assets/reset.min.css';
+html,
+body {
+  height: 100%;
+  background: #eee;
+}
+#root {
+  min-height: 100%;
+  background: #fff;
+  margin: 0 auto;
+}
+.ux-logo {
+  width: 136px;
+  min-width: 120px;
+  height: 36px;
+  background: #fbd6d6;
+  border-radius: 6px;
+  margin-inline-end: 24px;
+  line-height: 36px;
+  margin: 0 auto;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #8c00a2;
+}
+.ant-layout-header {
+  background: #fbd6d6;
+  margin-bottom: 10px;
+}
+.ant-layout-header .ant-menu-light {
+  background: #fbd6d6;
+}
+.ant-layout-header .ant-menu-light .ant-menu-item {
+  border-radius: 10%;
+  color: #8c00a2;
+}
+.ant-layout-header .ant-menu-light .ant-menu-item.ant-menu-item-selected {
+  color: #8c00a2;
+  font-weight: bold;
+  background-color: #fbd6d6;
+}
+.ant-layout-header .ant-menu-light .ant-menu-item.ant-menu-item-selected:after {
+  border-bottom-color: #8c00a2;
+}
+.ant-layout-header .ant-menu {
+  margin: auto 100px;
+}
+.ant-layout-header .ant-btn {
+  border-color: #8c00a2;
+  color: #8c00a2;
+}
