@@ -50,15 +50,15 @@ function App() {
         </Header>
         <Content
           style={{
-            padding: '0 20px',
+            background: '#eee',
           }}
         >
           <div
             style={{
               background: colorBgContainer,
-              minHeight: 600,
+              minHeight: 530,
               padding: 24,
-              borderRadius: borderRadiusLG,
+              // borderRadius: borderRadiusLG,
             }}
           >
             <ErrorBoundary fallback={<Result

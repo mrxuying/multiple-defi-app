@@ -20,4 +20,6 @@
 
     yarn add postcss-pxtorem
     yarn add lib-flexible
+
+    yarn add styled-components
 ```

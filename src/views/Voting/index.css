@@ -1,9 +1,34 @@
 .voting-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 20px, 20px;
   width: 100%;
-  min-height: 560px;
+  min-height: 460px;
+  position: relative;
+}
+.voting-container .ant-card-cover {
+  background: #aaa;
+  height: auto;
 }
 .voting-container .ant-card-cover img {
   border-radius: 0%;
-  height: 290px;
+  height: 240px;
+}
+.voting-container .organizer-info {
+  border-radius: 10px;
+  width: 240px;
+  background: #b452c3;
+}
+.voting-container .organizer-info .ant-card-head {
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.voting-container .organizer-info .ant-card-meta-title {
+  color: #ffffff;
+}
+.voting-container .organizer-info .ant-card-meta-description {
+  color: #ffffff;
 }

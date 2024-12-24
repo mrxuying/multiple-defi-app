@@ -1,0 +1,9 @@
+.ant-upload-wrapper {
+  width: 70%;
+}
+.ant-upload-drag:hover {
+  border: 1px dashed #8c00a2 !important;
+}
+.ant-upload-text {
+  color: #8c00a2 !important;
+}

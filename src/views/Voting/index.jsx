@@ -1,27 +1,31 @@
 import React from 'react'
 import { Card } from 'antd'
+// import { UserOutlined, FontColorsOutlined, HeartOutlined } from '@ant-design/icons'
 
+import Register from './Register'
 import './index.less'
+import organizer from '../../assets/images/organizer.png'
+
 
 export default function Voting() {
   const { Meta } = Card;
-  console.log(Meta)
   return (
     <div className='voting-container'>
-      <div className="candidate-card">
+
+      <Register />
+      <div className="organizer-info">
         <Card
-          title='Candidator #001'
+          title='Organizer 0xf6688hhj799098j'
           hoverable
           style={{
             width: 240,
+            height: 240,
+            background: '#b452c3',
           }}
-          cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+          cover={<img alt="avatar" src={organizer} />}
         >
-          <Meta header='Candidator #001' title="Europe Street beat" description="www.instagram.com" />
+          <Meta title="Notice" description="Only organizer of the voting contract can create voter and candidate for voting election" />
         </Card>
-      </div>
-      <div className="form-main-area">
-
       </div>
     </div>
   )

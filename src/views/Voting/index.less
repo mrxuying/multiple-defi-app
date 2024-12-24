@@ -1,12 +1,39 @@
 .voting-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 20px, 20px;
   width: 100%;
-  min-height: 560px;
+  min-height: 460px;
+  position: relative;
 
   .ant-card-cover{
+    background: #aaa;
+    height: auto;
     img{
       border-radius: 0%;
-      height: 290px;
+      height: 240px;
     }
   }
+  .organizer-info{
+    border-radius: 10px;
+    width: 240px;
+    background: #b452c3;
+    .ant-card-head{
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ant-card-meta-title{
+      color: rgb(255, 255, 255);
+    }
+    .ant-card-meta-description{
+
+      color: rgb(255, 255, 255);
+    }
+  }
+  
+
+  
 }
