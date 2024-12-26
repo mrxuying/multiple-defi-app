@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ConfigProvider locale={zhCN}>
     <Provider store={store}>
-      <App />
+        <App />
     </Provider>
   </ConfigProvider>
 );

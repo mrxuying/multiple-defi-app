@@ -249,6 +249,14 @@ const formatTime = function formatTime(time, template) {
     });
 };
 
+const textEllipsisMiddle = function textEllipsisMiddle(fullText, left=5, right=6){
+    if(!fullText) return '';
+    if(fullText.length <= left + right) return fullText;
+    if(typeof fullText !== 'string') fullText = fullText.toString();
+    let textEllipsis = fullText.slice(0, left) + '...' + fullText.slice(0-right, -1);
+    return textEllipsis;
+}
+
 const utils = {
     toType,
     isFunction,
@@ -264,7 +272,8 @@ const utils = {
     merge,
     clone,
     storage,
-    formatTime
+    formatTime,
+    textEllipsisMiddle
 };
 
 /* 处理冲突 */
