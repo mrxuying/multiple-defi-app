@@ -15,12 +15,34 @@ function LayoutApp() {
   // const { location } = window;
   const location = useLocation()
   const [current, setCurrent] = useState('')
-  console.log(location)
   const { Header, Content, Footer } = Layout
   const menuList = [
-    { label: (<Link to={{ pathname: '/staking' }}>Staking</Link>), key: 'staking', icon: <BlockOutlined /> },
-    { label: (<Link to={{ pathname: '/discretestaking' }}>DiscreteStaking</Link>), key: 'discretestaking', icon: <PoundOutlined /> },
-    { label: (<Link to={{ pathname: '/voting' }}>Voting</Link>), key: 'voting', icon: <SendOutlined /> },
+    {
+      label: (<Link to={{ pathname: '/staking' }}>Staking</Link>),
+      key: 'staking',
+      icon: <BlockOutlined />
+    }, {
+      label: (<Link to={{ pathname: '/discretestaking' }}>DiscreteStaking</Link>),
+      key: 'discretestaking',
+      icon: <PoundOutlined />
+    },
+    {
+      label: (<Link to={{ pathname: '/voting' }}>Voting</Link>),
+      key: 'voting',
+      icon: <SendOutlined />,
+      children: [
+        {
+          label: <Link to={{ pathname: '/voting/register' }}>Register</Link>,
+          key: 'register',
+          icon: <SendOutlined />,
+        },
+        {
+          label: <Link to={{ pathname: '/voting/voters' }}>VoterList</Link>,
+          key: 'voters',
+          icon: <SendOutlined />,
+        },
+      ],
+    }
   ]
   const {
     token: { colorBgContainer },
@@ -50,6 +72,7 @@ function LayoutApp() {
   }, [])//eslint-disable-line
 
   const onClick = (e) => {
+    console.log(e)
     setCurrent(e.key);
   };
 
@@ -98,9 +121,11 @@ function LayoutApp() {
       >
         <div
           style={{
+            display: "flex",
             background: colorBgContainer,
-            minHeight: 530,
+            height: 530,
             padding: 24,
+            minWidth: 1200
             // borderRadius: borderRadiusLG,
           }}
         >

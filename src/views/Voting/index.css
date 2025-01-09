@@ -15,20 +15,28 @@
   border-radius: 0%;
   height: 240px;
 }
-.voting-container .organizer-info {
+.organizer-info {
   border-radius: 10px;
   width: 240px;
   background: #b452c3;
 }
-.voting-container .organizer-info .ant-card-head {
+.organizer-info .ant-card-head {
   color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.voting-container .organizer-info .ant-card-meta-title {
+.organizer-info .ant-card-meta-title {
   color: #ffffff;
 }
-.voting-container .organizer-info .ant-card-meta-description {
+.organizer-info .ant-card-meta-description {
   color: #ffffff;
+}
+.organizer-info .ant-card-cover {
+  background: #aaa;
+  height: auto;
+}
+.organizer-info .ant-card-cover img {
+  border-radius: 0%;
+  height: 240px;
 }

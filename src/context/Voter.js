@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Web3Modal from "web3modal";
 import axios from "axios";
+import { ethers } from "ethers";
 
 import { JWT } from "./JWT";
 
@@ -12,7 +13,7 @@ import {
   CONTRACT_OWNER,
 } from "./constants";
 
-const ethers = require("ethers");
+// const ethers = require("ethers");
 // const  useRouter = require("next/router");
 
 const fetchContract = (signerOrProvider) =>
@@ -27,7 +28,7 @@ export const VotingProvider = ({ children }) => {
   const [loader, setLoader] = useState(false);
   const pushCandidate = [];
   // const candidateIndex = [];
-  const [candidateArray, setCandidateArray] = useState();
+  const [candidateArray, setCandidateArray] = useState([]);
 
   const [error, setError] = useState("");
   // const higestVote = [];
@@ -120,14 +121,14 @@ export const VotingProvider = ({ children }) => {
     }
   };
 
-  const createVoter = async (formInput, fileUrl) => {
+  const createVoter = async (registerData) => {
     try {
-      const { name, address, position } = formInput;
+      const { name, address, avatar, gender,age } = registerData;
       const connectAddress = await checkIfWalletIsConnected();
       if (connectAddress === CONTRACT_OWNER)
         return setError("Only Ower Of Contract Can Create Voter");
 
-      if (!name || !address || !position)
+      if (!name || !address || !avatar)
         return setError("Input Data is missing");
       setLoader(true);
       const web3Modal = new Web3Modal();
@@ -136,7 +137,7 @@ export const VotingProvider = ({ children }) => {
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
 
-      const data = JSON.stringify({ name, address, position, image: fileUrl });
+      const data = JSON.stringify({ name, address, gender, age, image: avatar });
 
       const response = await axios({
         method: "POST",
@@ -150,12 +151,12 @@ export const VotingProvider = ({ children }) => {
 
       const url = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
 
-      const voter = await contract.voterRight(address, name, url, fileUrl, {
+      const voter = await contract.voterRight(address, name, url, avatar, {
         gasLimit: ethers.utils.hexlify(8000000),
       });
       await voter.wait();
       setLoader(false);
-      window.location.href = "/voterList";
+      window.location.href = "/voting";
     } catch (error) {
       setLoader(false);
       setError("error: Check your API key and data");
@@ -214,6 +215,7 @@ export const VotingProvider = ({ children }) => {
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
+      // const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
 
@@ -230,24 +232,28 @@ export const VotingProvider = ({ children }) => {
     }
   };
 
-  const setCandidate = async (candidateForm, fileUrl, router) => {
-    const { name, address, age } = candidateForm;
+  const setCandidate = async (candidateForm) => {
+    console.log(ethers.utils.hexlify(8000000))
+    const { avatar, name, address, age, gender } = candidateForm;
     const connectAddress = await checkIfWalletIsConnected();
     if (connectAddress === CONTRACT_OWNER)
       return setError("Only Ower Of Contract Can Create Candidate");
     try {
-      if (!name || !address || !age) return console.log("Data Missing");
+      if (!name || !address || !age || !avatar || !gender) {
+        return setError('Please check your input(age, name ,gender, avatar, address)');
+      }
       setLoader(true);
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
+      // const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
 
       const data = JSON.stringify({
         name,
         address,
-        image: fileUrl,
+        image: avatar,
         age,
       });
 
@@ -267,16 +273,17 @@ export const VotingProvider = ({ children }) => {
         address,
         age,
         name,
-        fileUrl,
+        avatar,
         url,
         {
-          gasLimit: ethers.utils.hexlify(8000000),
+          gasLimit: ethers.utils.hexlify(8000000)
         }
       );
       await candidate.wait();
       setLoader(false);
-      window.location.href = "/";
+      window.location.href = "/voting";
     } catch (error) {
+      console.log(error)
       setLoader(false);
       setError("Something went wrong, check your API Key");
     }

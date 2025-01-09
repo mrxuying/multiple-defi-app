@@ -1,3 +1,7 @@
+.register-container{
+  display: flex;
+}
+
 .candidate-card{
   .ant-card-head {
     color: #8c00a2;
@@ -10,8 +14,6 @@
   }
 }
 
-
-
 .form-main-area {
   display: flex;
   flex-direction: column;
@@ -19,20 +21,21 @@
   border: 2px solid #8c00a2;
   flex: auto;
   flex-basis: auto;
-  margin-inline-start: 10px;
-  margin-inline-end: 10px;
-  margin-inline: 30px;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  margin-inline: 20px;
   border-radius: 8px 8px 8px 8px;
   justify-content: start;
   align-items: center;
   transition: box-shadow 0.2s, border-color 0.2s;
-    
+  min-width: 700px;
+  overflow: auto;
 
   .register-title {
     color: #8c00a2;
     font-size: 18px;
     font-weight: bold;
-    padding: 20px 0;
+    padding: 10px 0;
   }
 
   .ant-select {
@@ -42,11 +45,11 @@
 
   .ant-input-outlined {
     width: 70%;
-    margin: 5px auto;
+    margin: 2px auto;
   }
 
   .ant-btn {
-    margin-inline: 20px;
+    margin-inline: 10px;
   }
 
   .ant-btn-color-dangerous {
@@ -58,5 +61,8 @@
     background: #8c00a2;
   }
 
-  
+  .validate-error{
+    color: rgb(255, 58, 58);
+    font-size: 10px;
+  }
 }

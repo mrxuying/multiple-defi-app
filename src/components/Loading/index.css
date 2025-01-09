@@ -1,0 +1,16 @@
+.ant-spin-nested-loading {
+  height: 100%;
+  color: #8c00a2;
+}
+.ant-spin-nested-loading .ant-spin-dot-holder {
+  top: 50%;
+}
+.ant-spin-nested-loading .ant-spin-dot-item {
+  color: #888;
+}
+.ant-spin-nested-loading .ant-spin-text {
+  color: #888;
+}
+.ant-spin-nested-loading div > .ant-spin {
+  top: 200px;
+}

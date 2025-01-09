@@ -22,6 +22,7 @@
     yarn add lib-flexible
 
     yarn add styled-components
+    yarn add react-dropzone
 ```
 
 ```shell

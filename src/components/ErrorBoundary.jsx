@@ -1,5 +1,4 @@
 import React from "react";
-import { logErrorToMyService } from 'react'
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -18,7 +17,7 @@ export default class ErrorBoundary extends React.Component {
     //   in ErrorBoundary (created by App)
     //   in div (created by App)
     //   in App
-    logErrorToMyService(error, info.componentStack);
+    console.log(error, info.componentStack);
   }
 
   render() {

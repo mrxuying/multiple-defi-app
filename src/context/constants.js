@@ -7,7 +7,7 @@ import voting from "./Create.json";
  * 0xa8592EbFd31247BE545eA42c10BfF47288Cc17cf
  */
 export const VotingAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
-export const CONTRACT_OWNER = voting.abi;
+// export const CONTRACT_OWNER = voting.abi;
 
 //POLYGON TEST
 // export const VotingAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
@@ -15,7 +15,7 @@ export const VotingAddressABI = voting.abi;
 
 //CONTRACT OWNER
 //HARDHAT
-// export const CONTRACT_OWNER = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+export const CONTRACT_OWNER = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 
 //REAL ADDRESS
 // export const CONTRACT_OWNER = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";

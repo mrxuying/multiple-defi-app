@@ -1,36 +1,66 @@
 import { lazy } from "react"
-import { withKeepAlive } from "keepalive-react-component"
-
 import Staking from '../views/Staking'
+
+const DiscreteStaking = lazy(()=>import('../views/DiscreteStaking'));
+const CandidateList = lazy(()=>(import('../views/Voting/CandidateList')));
+const Register = lazy(()=>(import('../views/Voting/Register')));
+const Page404 = lazy(() => import('../views/Page404'));
+const Voting = lazy(() => import('../views/Voting'));
+const VoterList = lazy(() => import('../views/Voting/VoterList'));
 
 export const routes = [
   {
     path: '/',
     name: 'home',
-    component: withKeepAlive(Staking, {cacheId: 'staking', scroll: true}),//组件缓存
-    meta: {title: 'staking'}
+    element: <Staking />,//组件缓存
+    meta: {title: 'Staking'}
   },{
     path: '/staking',
     name: 'staking',
-    component: withKeepAlive(Staking, {cacheId: 'staking', scroll: true}),
+    element: <Staking />,
     meta: {title: 'staking'}
-  },
-  {
+  },{
     path: '/discretestaking',
     name: 'discretestaking',
-    component: lazy(()=>import('../views/DiscreteStaking')),
-    meta: {title: 'staking'}
+    element: <DiscreteStaking />,
+    meta: {title: 'DiscreteStaking'}
   },{
     path: '/voting',
     name: 'voting',
-    component: lazy(()=>(import('../views/Voting'))),
-    meta: {title: 'voting'}
-  },{
+    element: <Voting />,
+    meta: {title: 'CandidateList'},
+    children:[
+      {
+        path: 'register',
+        name: 'register',
+        element: <Register />,
+        meta: {title: 'Register'},
+      },
+      {
+        path: 'voters',
+        name: 'voters',
+        element: <VoterList />,
+        meta: {title: 'Voters'},
+      },
+    ]
+  },
+  // {
+  //   path: '/register',
+  //   name: 'register',
+  //   element: <Register />,
+  //   meta: {title: 'Register'},
+  // },{
+  //   path: '/voters',
+  //   name: 'voters',
+  //   element: <Register />,
+  //   meta: {title: 'Voters'},
+  // },
+  {
     path: '*',
     name: '404',
-    component: lazy(() => import('../views/Page404')),
+    element: <Page404 />,
     meta: {
-      title: 'Page not found 404',
+      title: 'PageNotFound',
     },
   },
 

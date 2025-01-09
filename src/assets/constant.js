@@ -23,3 +23,25 @@ export const monthCN = [
 export const validTokenList = [
   
 ]
+
+export const genderList = [
+  {
+    value: '1',
+    label: 'Female',
+  },
+  {
+    value: '2',
+    label: 'Male',
+  },
+]
+
+export const userTypeList = [
+  {
+    value: '1',
+    label: 'candidate',
+  },
+  {
+    value: '2',
+    label: 'voter',
+  },
+]

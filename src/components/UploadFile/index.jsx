@@ -1,51 +1,49 @@
-import React, { useState } from 'react'
-import { message, Upload } from 'antd';
-import { FileImageFilled } from '@ant-design/icons';
+import React, { useCallback, useState, useContext } from 'react'
+import { useDropzone } from 'react-dropzone'
+import { Image } from "antd"
 import './index.less'
+import { VotingContext } from '../../context/Voter'
+import upload from '../../assets/images/upload.png'
+import Loading from '../Loading'
 
 
-export default function UploadFile() {
-  const { Dragger } = Upload;
-  const fileProperties = {
-    name: 'file',
-    multiple: false,
-    accept: 'image/png, image/jpeg, image/gif, image/webm',
-    action: '/mock/api/upload',
-  }
+export default function UploadFile(props) {
+  //-------------VOTERS
+  const { loader } = useContext(VotingContext);
+  const { handleUpload } = props
+  const [fileUrl, setFileUrl] = useState(null)
 
-  const [fileList, setFileList] = useState([]);
+  const onDrop = useCallback(async (acceptedFile) => {
+    const url = await handleUpload(acceptedFile[0]);
+    setFileUrl(url);
+  }, []);//eslint-disable-line
 
-  const onChange = (info) => {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      setFileList([info.file.url])
-      message.success(`${info.file.name} uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} upload failed.`);
-    }
-  }
-
-  const onDrop = (e) => {
-    message.success(`${e.name}droped successfully.`);
-  }
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: "image/*",
+    maxSize: 5000000,
+  });
 
   return (
-    <>{fileList.length === 1 ? <img src={fileList[0]} alt="" /> :
-
-      <Dragger onChange={onChange} onDrop={onDrop} {...fileProperties}>
-        <p className="ant-upload-drag-icon">
-          <FileImageFilled style={{ color: '#8c00a2' }} />
-        </p>
-        <p className="ant-upload-text">Click or drag file to this area to upload</p>
-        <p className="ant-upload-hint">
-          Upload File: JPG, PNG, GIF, WEBM MAX 100MB
-        </p>
-      </Dragger>
-    }
+    <>
+      {loader && <Loading spinning={loader} />}
+      <div {...getRootProps()}>
+        <input {...getInputProps()} />
+        <div className='upload-area'>
+          <p className='upload-content-limit'>Upload File: JPG, PNG, GIF, WEBM MAX 100MB</p>
+          <div className='upload-img'>
+            <Image
+              preview={false}
+              src={fileUrl ? fileUrl : upload}
+              width={100}
+              alt="file upload"
+            />
+          </div>
+          <p className='upload-content-tips'>Drag & Drop File or Browse media on your device</p>
+        </div>
+      </div>
     </>
+
 
   )
 }
